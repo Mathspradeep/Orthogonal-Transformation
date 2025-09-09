@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Forms: Theory and Solved Problems</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" 
+            onload="renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });">
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-out;
+        }
+        h1, h2, h3 {
+            color: #1a5276;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            animation: slideIn 0.6s ease-out;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+            animation: slideIn 0.8s ease-out;
+        }
+        h3 {
+            font-size: 1.3em;
+            margin-top: 20px;
+            border-bottom-style: dashed;
+            border-bottom-width: 1px;
+        }
+        .problem-statement {
+            background-color: #eaf2f8;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #3498db;
+            border-radius: 8px;
+            font-size: 1.2em;
+        }
+        .homework-section {
+            background-color: #fdf2e9;
+            padding: 20px;
+            margin-top: 40px;
+            border-left: 5px solid #e67e22;
+            border-radius: 8px;
+        }
+        details {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+        details[open] {
+            background: #fdfdfd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        summary {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 15px;
+            cursor: pointer;
+            outline: none;
+            color: #2c3e50;
+            user-select: none;
+        }
+        .solution-content {
+            padding: 0 20px 20px 20px;
+            border-top: 1px solid #eee;
+        }
+        .final-answer {
+            background-color: #d4efdf;
+            padding: 15px;
+            margin-top: 15px;
+            border-left: 5px solid #28a745;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Reduction of Quadratic Form: Solved Problems</h1>
+
+<p>The transformation is performed using an orthogonal matrix N (where $N^T N = I$) whose columns are the normalized eigenvectors of matrix A. The change of variables is given by $X = NY$.</p>
+    <ol>
+        <li><strong>Find the Symmetric Matrix (A)</strong></li>
+        <li><strong>Find Eigenvalues ($\lambda$)</strong></li>
+        <li><strong>Find and Normalize Eigenvectors</strong></li>
+        <li><strong>Construct the Modal Matrix (N)</strong></li>
+        <li><strong>Verify with $N^T A N = D$</strong></li>
+    </ol>
+
+        <hr style="margin: 50px 0;">
+    
+    <h2>Problem 1: Positive Definite Form</h2>
+    <div class="problem-statement">
+        Reduce the quadratic form $Q = 3x_1^2 + 5x_2^2 + 3x_3^2 - 2x_2x_3 + 2x_3x_1 - 2x_1x_2$ to its canonical form and determine its nature.
+    </div>
+
+    <details>
+        <summary>Step 1: Write the Symmetric Matrix A</summary>
+        <div class="solution-content">
+            $$ A = \begin{pmatrix} 3 & -1 & 1 \\ -1 & 5 & -1 \\ 1 & -1 & 3 \end{pmatrix} $$
+        </div>
+    </details>
+    <details>
+        <summary>Step 2: Find the Eigenvalues ($\lambda$)</summary>
+        <div class="solution-content">
+            <p>The characteristic equation $\det(A - \lambda I) = 0$ gives the eigenvalues: $\lambda_1=2$, $\lambda_2=3$, $\lambda_3=6$.</p>
+        </div>
+    </details>
+    <details>
+        <summary>Step 3: Find the Eigenvectors</summary>
+        <div class="solution-content">
+            <p>For each eigenvalue, we solve $(A - \lambda I)X = 0$.</p>
+            <h3>For $\lambda_1 = 2$: $X_1 = \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}$</h3>
+            <h3>For $\lambda_2 = 3$: $X_2 = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$</h3>
+            <h3>For $\lambda_3 = 6$: $X_3 = \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}$</h3>
+        </div>
+    </details>
+    <details>
+        <summary>Step 4: Normalize Vectors and Form Matrix N</summary>
+        <div class="solution-content">
+            <p>The orthogonal modal matrix N is formed by the normalized eigenvectors:</p>
+            $$ N = \begin{pmatrix} -1/\sqrt{2} & 1/\sqrt{3} & 1/\sqrt{6} \\ 0 & 1/\sqrt{3} & -2/\sqrt{6} \\ 1/\sqrt{2} & 1/\sqrt{3} & 1/\sqrt{6} \end{pmatrix} $$
+        </div>
+    </details>
+    <details>
+        <summary>Step 5: Verify the Diagonalization with $N^T A N$</summary>
+        <div class="solution-content">
+            <p>The product $N^T A N$ correctly yields the diagonal matrix D:</p>
+            $$ D = N^T A N = \begin{pmatrix} 2 & 0 & 0 \\ 0 & 3 & 0 \\ 0 & 0 & 6 \end{pmatrix} $$
+        </div>
+    </details>
+    <details>
+        <summary>Step 6: Final Canonical Form and Nature</summary>
+        <div class="solution-content">
+            <div class="final-answer">
+                $$ Q = 2y_1^2 + 3y_2^2 + 6y_3^2 $$
+                <p><strong>Nature:</strong> <strong>Positive Definite</strong>.</p>
+            </div>
+        </div>
+    </details>
+    
+    <hr style="margin: 50px 0;">
+
+    <h2>Problem 2: Indefinite Form (with Repeated Eigenvalue)</h2>
+    <div class="problem-statement">
+        Reduce the quadratic form $Q = 8x_1^2 - 7x_2^2 + 8x_3^2 + 8x_1x_2 - 2x_1x_3 + 8x_2x_3$ to its canonical form and find its nature.
+    </div>
+    
+    <details>
+        <summary>Step 1: Write the Symmetric Matrix A</summary>
+        <div class="solution-content">
+            $$ A = \begin{pmatrix} 8 & 4 & -1 \\ 4 & -7 & 4 \\ -1 & 4 & 8 \end{pmatrix} $$
+        </div>
+    </details>
+    <details>
+        <summary>Step 2: Find the Eigenvalues ($\lambda$)</summary>
+        <div class="solution-content">
+            <p>The characteristic equation gives the eigenvalues: $\lambda_1=9$, $\lambda_2=9$, $\lambda_3=-9$.</p>
+        </div>
+    </details>
+    <details>
+        <summary>Step 3: Find the Eigenvectors</summary>
+        <div class="solution-content">
+            <h3>For $\lambda_3 = -9$:</h3>
+             <p>Solving $(A+9I)X=0$ yields the eigenvector $X_3 = \begin{pmatrix} 1 \\ -4 \\ 1 \end{pmatrix}$.</p>
+            <h3>For repeated $\lambda_1 = \lambda_2 = 9$:</h3>
+             <p>Solving $(A-9I)X=0$ gives the condition $-x_1 + 4x_2 - x_3 = 0$. Two orthogonal eigenvectors that satisfy this are:</p>
+             <p>$X_1 = \begin{pmatrix} 4 \\ 1 \\ 0 \end{pmatrix}$ and $X_2 = \begin{pmatrix} 1 \\ -4 \\ -17 \end{pmatrix}$</p>
+        </div>
+    </details>
+    <details>
+        <summary>Step 4: Normalize Vectors and Form Matrix N</summary>
+        <div class="solution-content">
+            <p>The orthogonal matrix N is:</p>
+            $$ N = \begin{pmatrix} 4/\sqrt{17} & 1/\sqrt{306} & 1/\sqrt{18} \\ 1/\sqrt{17} & -4/\sqrt{306} & -4/\sqrt{18} \\ 0 & -17/\sqrt{306} & 1/\sqrt{18} \end{pmatrix} $$
+        </div>
+    </details>
+    <details>
+        <summary>Step 5: Final Canonical Form and Nature</summary>
+        <div class="solution-content">
+            <div class="final-answer">
+                $$ Q = 9y_1^2 + 9y_2^2 - 9y_3^2 $$
+                <p><strong>Nature:</strong> <strong>Indefinite</strong>.</p>
+            </div>
+        </div>
+    </details>
+    
+    <div class="homework-section">
+        <h2>Homework: Practice Problems</h2>
+        <p>For each problem below, find the canonical form and determine the nature of the quadratic form.</p>
+        
+        <h3>Problem 1</h3>
+        <div class="problem-statement">
+            $Q = 3x_1^2 + 2x_2^2 + 3x_3^2 - 2x_1x_3$
+        </div>
+        
+        <h3>Problem 2</h3>
+        <div class="problem-statement">
+            $Q = 5x_1^2 + 2x_2^2 + 5x_3^2 + 4x_1x_2 - 8x_1x_3 - 4x_2x_3$
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
